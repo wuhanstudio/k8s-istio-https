@@ -2,6 +2,10 @@
 
 > Keywords: k8s, Istio, jaeger, grafana, kiali, micro-service
 
+![](docs/kiali.png)
+
+![](docs/app.png)
+
 This repo contains configurations for deploying micro-service applications on a k8s cluster with auto-generated https certificate.
 
 ```
@@ -135,7 +139,9 @@ https://grafana.wuhanstudio.uk
 https://jaeger.wuhanstudio.uk
 ```
 
+![](docs/grafana.png)
 
+![](docs/jaeger.png)
 
 ### Conclusion
 
