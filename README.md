@@ -8,8 +8,6 @@ This repo contains configurations for deploying micro-service applications on a 
 
 ![](docs/app.png)
 
-This repo contains configurations for deploying micro-service applications on a k8s cluster with auto-generated TLS certificate.
-
 ```
 $ kubectl get no
 NAME                                       STATUS   ROLES    AGE     VERSION        
