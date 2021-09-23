@@ -20,11 +20,18 @@ gke-cluster-1-default-pool-ff62b101-fr7l   Ready    <none>   2d22h   v1.20.9-gke
 
 ### 0. TLDR;
 
-In total, 6 commands are required to set up everything.
-
 ```
+# Install Istio
 $ istioctl install --set profile=demo -y
 $ kubectl apply -f 1-label-default-namespace.yaml
+
+# Install Istio Add-Ons
+$ cd istio-1.11.2/samples/addons
+$ kubectl apply -f kiali.yaml
+$ kubectl apply -f grafana.yaml
+$ kubectl apply -f jaeger.yaml
+
+# Deploy applications
 $ kubectl apply -f 2-application-no-istio.yaml
 $ kubectl apply -f 3-http-apps.yaml
 $ kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.3/cert-manager.yaml
