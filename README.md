@@ -1,5 +1,7 @@
 ## Deploy micro-service applications on k8s cluster using istio
 
+This repo contains configurations for deploying micro-service applications on a k8s cluster with auto-generated TLS certificate.
+
 > Keywords: k8s, Istio, jaeger, grafana, kiali, micro-service
 
 ![](docs/kiali.png)
