@@ -36,7 +36,7 @@ Istio can be installed using istioctl, which can be downloaded on the github rel
 
 https://github.com/istio/istio/releases (e.g. [istio-1.11.2-win.zip](https://github.com/istio/istio/releases/download/1.11.2/istio-1.11.2-win.zip))
 
-**Make sure the k8s cluster is up and running before installing istio**
+**Make sure the k8s cluster is up and running before installing istio.**
 
 ```
 $ kubectl get no
@@ -52,7 +52,7 @@ Now we can install istio:
 istioctl install --set profile=demo -y
 ```
 
-Now we can enable istio for applications in the default namespace:
+Let's enable istio for pods in the default namespace:
 
 ```
 kubectl apply -f 1-label-default-namespace.yaml
