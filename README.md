@@ -82,18 +82,13 @@ Now we should see:
 ```
 $ kubectl get po -n istio-system
 NAME                                    READY   STATUS    RESTARTS   AGE
-grafana-556f8998cd-gwdz4                1/1     Running   0          42h
-istio-egressgateway-6c9486d667-f2fwh    1/1     Running   0          43h
-istio-ingressgateway-556bd8b675-gbjmj   1/1     Running   0          43h
-istiod-96b47b576-kkqc2                  1/1     Running   0          43h
-jaeger-5f65fdbf9b-gpjmq                 0/1     Evicted   0          42h
-jaeger-5f65fdbf9b-h4bgq                 0/1     Evicted   0          10h
-jaeger-5f65fdbf9b-n842n                 0/1     Evicted   0          31h
-jaeger-5f65fdbf9b-njgjz                 0/1     Evicted   0          22h
-jaeger-5f65fdbf9b-qnmfr                 0/1     Evicted   0          16h
-jaeger-5f65fdbf9b-twl8m                 1/1     Running   0          4h20m
-kiali-787bc487b7-vtgh6                  1/1     Running   2          42h
-prometheus-9f4947649-7q56n              2/2     Running   0          42h
+grafana-556f8998cd-gwdz4                1/1     Running   0          46h
+istio-egressgateway-6c9486d667-f2fwh    1/1     Running   0          46h
+istio-ingressgateway-556bd8b675-gbjmj   1/1     Running   0          46h
+istiod-96b47b576-kkqc2                  1/1     Running   0          46h
+jaeger-5f65fdbf9b-twl8m                 1/1     Running   8          7h47m
+kiali-787bc487b7-vtgh6                  1/1     Running   3          46h
+prometheus-9f4947649-7q56n              2/2     Running   0          46h
 ```
 
 
@@ -116,9 +111,10 @@ Finally, we can deploy the gateway (both https and http):
 kubectl apply -f 3-http-apps.yaml
 ```
 
-Now the apps are available at (replace domain names  with yours in the yaml file):
+Now the apps are available at:
 
 ```
+# Replace domain names  with yours in the yaml file
 http://app.wuhanstudio.uk
 http://grafana.wuhanstudio.uk
 http://jaeger.wuhanstudio.uk
