@@ -127,7 +127,7 @@ tracing                NodePort       10.28.0.210    <none>         80:31001/TCP
 zipkin                 ClusterIP      10.28.12.152   <none>         9411/TCP                                                                     46h
 ```
 
-For me, the external ip above is **35.246.2.206 (istio-ingressgateway)**. After updating the dns recors, the apps are available at:
+For me, the external ip above is **35.246.2.206 (istio-ingressgateway)**. After updating the DNS record, the apps are available at:
 
 ```
 # Replace domain names  with yours in the yaml file
