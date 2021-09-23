@@ -8,16 +8,6 @@ This repo contains configurations for deploying micro-service applications on a 
 
 ![](docs/app.png)
 
-```
-$ kubectl get no
-NAME                                       STATUS   ROLES    AGE     VERSION        
-gke-cluster-1-default-pool-ff62b101-8lbw   Ready    <none>   2d22h   v1.20.9-gke.701
-gke-cluster-1-default-pool-ff62b101-dkz7   Ready    <none>   2d22h   v1.20.9-gke.701
-gke-cluster-1-default-pool-ff62b101-fr7l   Ready    <none>   2d22h   v1.20.9-gke.701
-```
-
-
-
 ### 0. TLDR;
 
 ```
@@ -46,11 +36,23 @@ Istio can be installed using istioctl, which can be downloaded on the github rel
 
 https://github.com/istio/istio/releases (e.g. [istio-1.11.2-win.zip](https://github.com/istio/istio/releases/download/1.11.2/istio-1.11.2-win.zip))
 
+**Make sure the k8s cluster is up and running before installing istio**
+
+```
+$ kubectl get no
+NAME                                       STATUS   ROLES    AGE     VERSION        
+gke-cluster-1-default-pool-ff62b101-8lbw   Ready    <none>   2d22h   v1.20.9-gke.701
+gke-cluster-1-default-pool-ff62b101-dkz7   Ready    <none>   2d22h   v1.20.9-gke.701
+gke-cluster-1-default-pool-ff62b101-fr7l   Ready    <none>   2d22h   v1.20.9-gke.701
+```
+
+Now we can install istio:
+
 ```
 istioctl install --set profile=demo -y
 ```
 
-Now we can enable istio for the default namespace:
+Now we can enable istio for applications in the default namespace:
 
 ```
 kubectl apply -f 1-label-default-namespace.yaml
