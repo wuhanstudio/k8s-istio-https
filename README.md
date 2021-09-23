@@ -111,7 +111,23 @@ Finally, we can deploy the gateway (both https and http):
 kubectl apply -f 3-http-apps.yaml
 ```
 
-Now the apps are available at:
+Of course, it's required to change the DNS record of your registered domains. You can find the gateway IP address here:
+
+```
+$ kubectl get svc -n istio-system
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                                                                      AGE
+grafana                ClusterIP      10.28.14.73    <none>         3000/TCP                                                                     46h
+istio-egressgateway    ClusterIP      10.28.9.40     <none>         80/TCP,443/TCP                                                               46h
+istio-ingressgateway   LoadBalancer   10.28.0.176    35.246.2.206   15021:30835/TCP,80:30829/TCP,443:32693/TCP,31400:30919/TCP,15443:32644/TCP   46h
+istiod                 ClusterIP      10.28.14.238   <none>         15010/TCP,15012/TCP,443/TCP,15014/TCP                                        46h
+jaeger-collector       ClusterIP      10.28.2.203    <none>         14268/TCP,14250/TCP,9411/TCP                                                 46h
+kiali                  LoadBalancer   10.28.3.150    34.89.54.57    80:31608/TCP,9090:30937/TCP                                                  46h
+prometheus             ClusterIP      10.28.8.20     <none>         9090/TCP                                                                     46h
+tracing                NodePort       10.28.0.210    <none>         80:31001/TCP,16685:30881/TCP                                                 46h
+zipkin                 ClusterIP      10.28.12.152   <none>         9411/TCP                                                                     46h
+```
+
+For me, the external ip above is **35.246.2.206 (istio-ingressgateway)**. After updating the dns recors, the apps are available at:
 
 ```
 # Replace domain names  with yours in the yaml file
