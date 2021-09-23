@@ -6,7 +6,7 @@
 
 ![](docs/app.png)
 
-This repo contains configurations for deploying micro-service applications on a k8s cluster with auto-generated https certificate.
+This repo contains configurations for deploying micro-service applications on a k8s cluster with auto-generated TLS certificate.
 
 ```
 $ kubectl get no
