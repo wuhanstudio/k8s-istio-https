@@ -1,0 +1,82 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: http-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*.wuhanstudio.uk"   # Domain name of the external website
+    tls:
+      httpsRedirect: true # sends 301 redirect for http requests
+---
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: fleetman-webapp
+  namespace: default
+spec:
+  hosts:      # which incoming host are we applying the proxy rules to???
+    - "app.wuhanstudio.uk" # Copy the value in the gateway hosts - usually a Domain Name
+  gateways:
+    - http-gateway
+  http:
+    - route:
+        - destination:
+            host: fleetman-webapp
+            subset: original
+          weight: 90
+        - destination:
+            host: fleetman-webapp
+            subset: experimental
+          weight: 10
+---
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: fleetman-webapp
+  namespace: default
+spec:
+  host: fleetman-webapp
+  subsets:
+    - labels:
+        version: original
+      name: original
+    - labels:
+        version: experimental
+      name: experimental
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: grafana-webapp
+  namespace: istio-system
+spec:
+  hosts:      # which incoming host are we applying the proxy rules to???
+    - "grafana.wuhanstudio.uk" # Copy the value in the gateway hosts - usually a Domain Name
+  gateways:
+    - default/http-gateway
+  http:
+    - route:
+        - destination:
+            host: grafana
+---
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: jaeger-webapp
+  namespace: istio-system
+spec:
+  hosts:      # which incoming host are we applying the proxy rules to???
+    - "jaeger.wuhanstudio.uk" # Copy the value in the gateway hosts - usually a Domain Name
+  gateways:
+    - default/http-gateway
+  http:
+    - route:
+        - destination:
+            host: tracing
