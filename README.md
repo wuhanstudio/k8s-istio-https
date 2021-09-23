@@ -1,4 +1,4 @@
-## Deploy secure applications on k8s cluster using istio
+## Deploy micro-service applications on k8s cluster using istio
 
 > Keywords: k8s, Istio, jaeger, grafana, kiali, micro-service
 
