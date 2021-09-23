@@ -111,7 +111,7 @@ Finally, we can deploy the gateway (both https and http):
 kubectl apply -f 3-http-apps.yaml
 ```
 
-Of course, it's required to change the DNS record of your registered domains. You can find the gateway IP address here:
+Of course, it's required to change the DNS record of your registered domains (e.g. A record for *.wuhanstudio.uk). You can find the gateway IP address here:
 
 ```
 $ kubectl get svc -n istio-system
